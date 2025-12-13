@@ -69,7 +69,6 @@ def mapper_worker(path, byte_range, mapper_id, tmpdir):
     return out_path
 
 def shuffle_phase(map_outputs, reducers, tmpdir):
-    import hashlib
     bucket_paths = [os.path.join(tmpdir, f"bucket_{i}.tsv") for i in range(reducers)]
     buckets = [open(p, "w", encoding="utf-8") for p in bucket_paths]
 
