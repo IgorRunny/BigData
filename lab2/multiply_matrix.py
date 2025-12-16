@@ -1,10 +1,18 @@
 from typing import Iterator, Tuple, List
 from collections import defaultdict
-
+import random
+from typing import List
 
 Key = Tuple[int, int]
 Value = int
 MappedItem = Tuple[Key, Value]
+
+
+def generate_square_matrix(size: int) -> List[List[int]]:
+    return [
+        [random.randint(0, 20) for _ in range(size)]
+        for _ in range(size)
+    ]
 
 
 def map_matrix_multiply(A: List[List[int]], B: List[List[int]]) -> Iterator[MappedItem]:
@@ -46,15 +54,8 @@ def matrix_multiply_mapreduce(A: List[List[int]], B: List[List[int]]) -> List[Li
 
 
 if __name__ == "__main__":
-    A = [
-        [1, 2],
-        [3, 4]
-    ]
-
-    B = [
-        [5, 6],
-        [7, 8]
-    ]
+    A = generate_square_matrix(300)
+    B = generate_square_matrix(300)
 
     C = matrix_multiply_mapreduce(A, B)
 
